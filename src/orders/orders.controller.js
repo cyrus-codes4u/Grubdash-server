@@ -58,7 +58,48 @@ function reqBodyValidation(req,res,next){
     next()
 }
 
+//PUT addditional validation
+function statusNotDelivered(req,res,next){
+    const { status } = res.locals.newOrder
+    const existingStatus = orders[res.locals.index].status
+    const validStatus = ["pending", "prepared", "out-for-delivery", "delivered"]
+    // if the status from request exists / is not empty 
+    if(status && status.length > 0 && validStatus.includes(status)) {
+        // AND the existing status is not 'delivered'
+        if( existingStatus !== "delivered" ){
+            return next() 
+        }
+        return next({
+            status: 400,
+            message: "A delivered order cannot be changed"
+        })
+    }
+    //when updated status is not valid
+    next({
+        status: 400,
+        message: "Order must have a status of pending, preparing, out-for-delivery, delivered"
+    })
+}
 
+function idValidation(req, res, next){
+    const { id } = res.locals.newOrder
+    const {orderId} = req.params
+    //If there is no id property in body or id equals orderId, continue 
+    if(!id || orderId === id) { 
+        res.locals.newOrder.id = orderId
+        return next()
+    }
+    //Else throw error
+    next({
+        status:400,
+        message: `Order id does not match route id. Order: ${id}, Route: ${orderId}`
+    })
+}
+
+function update(req, res, next){
+    orders[res.locals.index] = res.locals.newOrder
+    res.json({data: orders[res.locals.index] })
+}
 function create(req,res){
     res.locals.newOrder.id = nextId()
     orders.push(res.locals.newOrder)
