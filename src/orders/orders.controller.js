@@ -22,6 +22,11 @@ function orderExists (req,res,next) {
 }
 
 
+
+function read(req, res, next){
+    res.status(200).json({data: orders[res.locals.index]})
+}
+
 function list(req, res, next){
     res.json({data : orders})
 }
