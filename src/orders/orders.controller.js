@@ -96,6 +96,22 @@ function idValidation(req, res, next){
     })
 }
 
+//DELETE /orders/:orderId checks that order status is pending
+function statusPending(req,res, next){
+    if(orders[res.locals.index].status === "pending"){
+        return next()
+    }
+    next({
+        status: 400,
+        message: "An order cannot be deleted unless it is pending" 
+    })
+}
+
+//Route Handlers
+function remove(req, res, next){
+    orders.splice(res.locals.index, 1)
+    res.sendStatus(204)
+}
 function update(req, res, next){
     orders[res.locals.index] = res.locals.newOrder
     res.json({data: orders[res.locals.index] })
