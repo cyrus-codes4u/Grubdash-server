@@ -21,12 +21,52 @@ function orderExists (req,res,next) {
     })
 }
 
+//general request body Validation
+function reqBodyValidation(req,res,next){
+    res.locals.newOrder = req.body.data // this should be an order without an ID 
+    const { deliverTo, mobileNumber, dishes } = res.locals.newOrder
+     // has correct deliverTo property
+    if(!deliverTo || deliverTo.length < 1) {
+        return next({
+            status: 400,
+            message: "Order must include a deliverTo"
+        })
+    }
+    // has correct mobileNumber property
+    if(!mobileNumber || mobileNumber.length < 1) {
+        return next({
+            status: 400,
+            message: "Order must include a mobileNumber"
+        })
+    }
+    // has dishes property in correct data structure
+    if(!dishes || !Array.isArray(dishes) || dishes.length < 1) {
+        return next({
+            status: 400,
+            message: "Order must include at least one dish"
+        })
+    }
+    // all dishes have correct quantity property 
+    const incorrectIndex = dishes
+                    .findIndex(({quantity}) => !quantity || !Number.isInteger(quantity) || quantity <= 0)
+    if(incorrectIndex !== -1){
+        return next({
+            status: 400,
+            message: `Dish ${incorrectIndex} must have a quantity that is an integer greater than 0`,
+        })  
+    }
+    next()
+}
 
 
+function create(req,res){
+    res.locals.newOrder.id = nextId()
+    orders.push(res.locals.newOrder)
+    res.status(201).json({ data: orders.slice(-1)[0] })
+}
 function read(req, res, next){
     res.status(200).json({data: orders[res.locals.index]})
 }
-
 function list(req, res, next){
     res.json({data : orders})
 }
