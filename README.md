@@ -20,7 +20,7 @@ Alternatively, if one wants to see changes to the local repo implemented in real
 Requests may be made to the following routes with listed HTTP methods:
 1. `/dishes`
   - GET 
-    Ex. Response
+    - Ex. Response
     ``
     {
       data: {
@@ -31,7 +31,7 @@ Requests may be made to the following routes with listed HTTP methods:
     }
     ``
   - POST 
-    Ex. Request
+    - Ex. Request
     ``
     {
       data: {
@@ -42,7 +42,7 @@ Requests may be made to the following routes with listed HTTP methods:
       }
     }
     ``
-    Ex. Response
+    - Ex. Response
      ``
     {
       data: {
@@ -57,7 +57,7 @@ Requests may be made to the following routes with listed HTTP methods:
 
 2. `/dishes/:dishId`
   - GET 
-    Ex. Response
+    - Ex. Response
     ``
     {
       data: {
@@ -70,7 +70,7 @@ Requests may be made to the following routes with listed HTTP methods:
     }
     ``
   - PUT
-    Ex. Request
+    - Ex. Request
     ``
     {
       data: {
@@ -80,7 +80,7 @@ Requests may be made to the following routes with listed HTTP methods:
       }
     }
     ``
-    Ex. Response
+    - Ex. Response
      ``
     {
       data: {
@@ -95,7 +95,7 @@ Requests may be made to the following routes with listed HTTP methods:
 
 3. `/orders`
   - GET
-    Ex. Response
+    - Ex. Response
     ``
     {
       data: {
@@ -106,7 +106,7 @@ Requests may be made to the following routes with listed HTTP methods:
     }
     ``
   - POST
-    Ex. Request
+    - Ex. Request
     ``
     {
       data: {
@@ -121,8 +121,7 @@ Requests may be made to the following routes with listed HTTP methods:
       }
     }
     ``
-    
-    Ex. Response
+    - Ex. Response
      ``
     {
       data: {
@@ -142,7 +141,7 @@ Requests may be made to the following routes with listed HTTP methods:
 
 4. `orders/:orderId` 
   - GET 
-    Ex. Response
+    - Ex. Response
     ``
     {
       data: {
@@ -160,7 +159,7 @@ Requests may be made to the following routes with listed HTTP methods:
     }
     ``
   - PUT
-    Ex. Request
+    - Ex. Request
      ``
     {
       data: {
@@ -170,7 +169,7 @@ Requests may be made to the following routes with listed HTTP methods:
       }
     }
     ``
-    Ex. Response
+    - Ex. Response
      ``
     {
       data: {
@@ -188,7 +187,6 @@ Requests may be made to the following routes with listed HTTP methods:
     }
     ``
   - DELETE
-    Ex. Response: 
-    `STATUS 204`
+    - Ex. Response: `STATUS 204`
 
 
