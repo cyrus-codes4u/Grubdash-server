@@ -10,10 +10,16 @@ This project relies on the following key tools and libraries:
 
 ## Spinning the Server
 To run this server locally, clone this repo and run the following command in the terminal: 
-`npm install`
-`npm run start`
+```bash
+npm install
+```
+```bash
+npm run start
+```
 Alternatively, if one wants to see changes to the local repo implemented in real-time:
-`npm run start:dev`
+```bash
+npm run start:dev
+```
 
 ## Routes and Request Methods
 ### with Expected Response
@@ -21,7 +27,7 @@ Requests may be made to the following routes with listed HTTP methods:
 1. `/dishes`
   - GET 
     - Ex. Response
-    ``
+    ```json
     {
       data: {
         dishes: [
@@ -29,10 +35,10 @@ Requests may be made to the following routes with listed HTTP methods:
         ]
       }
     }
-    ``
+    ```
   - POST 
     - Ex. Request
-    ``
+    ```json
     {
       data: {
         description: //description of the dish,
@@ -41,9 +47,9 @@ Requests may be made to the following routes with listed HTTP methods:
         image_url: //url to image of dish
       }
     }
-    ``
+    ```
     - Ex. Response
-     ``
+     ```json
     {
       data: {
         description: //description of the dish,
@@ -53,12 +59,12 @@ Requests may be made to the following routes with listed HTTP methods:
         id: *newly assigned id property*
       }
     }
-    ``
+    ```
 
 2. `/dishes/:dishId`
   - GET 
     - Ex. Response
-    ``
+    ```json
     {
       data: {
         description: // updated description of the dish,
@@ -68,10 +74,10 @@ Requests may be made to the following routes with listed HTTP methods:
         id:  // dishId
       }
     }
-    ``
+    ```
   - PUT
     - Ex. Request
-    ``
+    ```json
     {
       data: {
         description: // updated description of the dish,
@@ -79,9 +85,9 @@ Requests may be made to the following routes with listed HTTP methods:
         id:  //dishId
       }
     }
-    ``
+    ```
     - Ex. Response
-     ``
+     ```json
     {
       data: {
         description: // updated description of the dish,
@@ -91,12 +97,12 @@ Requests may be made to the following routes with listed HTTP methods:
         id:  // dishId 
       }
     }
-    ``
+    ```
 
 3. `/orders`
   - GET
     - Ex. Response
-    ``
+    ```json
     {
       data: {
         orders: [
@@ -104,10 +110,10 @@ Requests may be made to the following routes with listed HTTP methods:
         ]
       }
     }
-    ``
+    ```
   - POST
     - Ex. Request
-    ``
+    ```json
     {
       data: {
         deliverTo: //an address, 
@@ -120,9 +126,9 @@ Requests may be made to the following routes with listed HTTP methods:
           ]
       }
     }
-    ``
+    ```
     - Ex. Response
-     ``
+     ```json
     {
       data: {
         deliverTo: //an address, 
@@ -137,12 +143,12 @@ Requests may be made to the following routes with listed HTTP methods:
         id: *newly created id*
       }
     }
-    ``
+    ```
 
 4. `orders/:orderId` 
   - GET 
     - Ex. Response
-    ``
+    ```json
     {
       data: {
         id: //orderId ,
@@ -157,10 +163,10 @@ Requests may be made to the following routes with listed HTTP methods:
         status: //'pending' 'delivered' or 'cancelled'
       }
     }
-    ``
+    ```
   - PUT
     - Ex. Request
-     ``
+     ```json
     {
       data: {
         id: //orderId ,
@@ -168,9 +174,9 @@ Requests may be made to the following routes with listed HTTP methods:
         status: // updated status
       }
     }
-    ``
+    ```
     - Ex. Response
-     ``
+     ```json
     {
       data: {
         id: //orderId ,
@@ -185,7 +191,7 @@ Requests may be made to the following routes with listed HTTP methods:
         status: // updated status
       }
     }
-    ``
+    ```
   - DELETE
     - Ex. Response: `STATUS 204`
 
